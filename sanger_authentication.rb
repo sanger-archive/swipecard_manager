@@ -33,13 +33,13 @@ module Sanger
       return result['username'] if result["valid"] == 1 and not result["username"].blank?
       return nil  # In all cases, other than a valid user, return nil
     rescue ConnectionError => exception
-      logger.info("Authentication service #{configatron.sanger_auth_service} cookie: #{value} (error response)")
+      logger.info("Authentication service #{@config.validation_url} cookie: #{cookie_value} (error response)")
       return nil
     rescue ActiveSupport::JSON.parse_error => exception
-      logger.info("Authentication service parse error #{configatron.sanger_auth_service} cookie: #{value} (#{ response })")
+      logger.info("Authentication service parse error #{@config.validation_url} cookie: #{cookie_value} (#{ response })")
       return nil
     rescue Exception => exception
-      logger.info("Authentication service down #{configatron.sanger_auth_service} cookie: #{value} res: #{response}")
+      logger.info("Authentication service down #{@config.validation_url} cookie: #{cookie_value} res: #{response}")
       return nil
         end
         
