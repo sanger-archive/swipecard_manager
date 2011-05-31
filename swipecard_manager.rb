@@ -15,6 +15,7 @@ def self.init()
   raise RuntimeError, "Authentication service not configured" unless auth
   params = {"cookie_name" => auth.cookie_name,
    "validation_url" => auth.validation_url,
+   "user_agent" => "Swipecard Manager",
    "proxy" => configatron.proxy
   }
   @@sanger_authentication = Sanger::Authentication::SSO.new('swipecard manager',params)

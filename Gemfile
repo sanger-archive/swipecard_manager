@@ -13,6 +13,7 @@ gem 'haml'
 gem 'sequencescape-client-api', :git => 'http://github.com/sanger/sequencescape-client-api.git', :require => 'sequencescape', :ref => '8c30df3'
 gem 'delayed_job'
 gem "jquery-rails"
+gem "configatron"
 
 gem 'sqlite3-ruby', '~> 1.2.0', :require => 'sqlite3', :groups => [:development, :test, :cucumber]
 gem 'ruby-debug19', :require => 'ruby-debug', :groups => [:development, :test, :cucumber]
