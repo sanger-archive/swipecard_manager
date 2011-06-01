@@ -30,7 +30,12 @@ def find_login_from_cookies(cookies)
   halt 500, "cookie name not configured" unless token_name=configatron.authentication_service.cookie_name
   token = cookies[token_name]
   #halt 301, "please log on " unless token
-   @@sanger_authentication.sso_login_from_cookie(token)
+  login = @@sanger_authentication.sso_login_from_cookie(token)
+  if token && !login
+    halt 500, "Authentication service error"
+  else
+    login
+  end
 end
 
 # find user from cookie
@@ -42,22 +47,16 @@ get '/' do
   haml :index
 end
 
-get '/todo' do
+get '/update' do
   case @user
   when nil
     redirect to('/login')
   else
-    haml :code_input
+    haml :update
   end
 end
 
 get '/login' do
+  redirect to '/' if @user
   haml :login
 end
-__END__
-@@ login
-please login 
-
-@@ code_input
-Hello, user #{@user}. How are you
-
