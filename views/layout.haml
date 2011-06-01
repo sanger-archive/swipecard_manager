@@ -1,0 +1,13 @@
+%html
+  %table.bar#header
+    %tr
+      %td
+        %h1 Swipecard Manager
+      %td#user_name
+        - if @user
+          logged as #{ user }
+        - else
+          %i please login to the sanger
+          %a{:href => configatron.login_service.url }website
+  #main
+    = yield

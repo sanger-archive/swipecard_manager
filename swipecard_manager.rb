@@ -55,24 +55,6 @@ get '/login' do
   haml :login
 end
 __END__
-@@ layout
-%html
-  %table.bar#header
-    %tr
-      %td
-        %h1 Swipecard Manager
-      %td
-        - if @user
-          logged as #{ user }
-        - else
-          %i please login to the sanger
-          %a{:href => configatron.login_service.url }website
-  #main
-    = yield
-
-@@ index
-%a{:href => url('/update') } Update or enter a new swipecard code
-
 @@ login
 please login 
 
