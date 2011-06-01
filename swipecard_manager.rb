@@ -29,7 +29,7 @@ def find_login_from_cookies(cookies)
   halt 500, "server not configured" unless @@sanger_authentication
   halt 500, "cookie name not configured" unless token_name=configatron.authentication_service.cookie_name
   token = cookies[token_name]
-  halt 301, "please log on " unless token
+  #halt 301, "please log on " unless token
    @@sanger_authentication.sso_login_from_cookie(token)
 end
 
@@ -39,11 +39,15 @@ before do
 end
 # main page
 get '/' do
+  haml :index
+end
+
+get '/todo' do
   case @user
   when nil
     redirect to('/login')
   else
-    @user
+    haml :code_input
   end
 end
 
@@ -51,5 +55,27 @@ get '/login' do
   haml :login
 end
 __END__
+@@ layout
+%html
+  %table.bar#header
+    %tr
+      %td
+        %h1 Swipecard Manager
+      %td
+        - if @user
+          logged as #{ user }
+        - else
+          %i please login to the sanger
+          %a{:href => configatron.login_service.url }website
+  #main
+    = yield
+
+@@ index
+%a{:href => url('/update') } Update or enter a new swipecard code
+
 @@ login
 please login 
+
+@@ code_input
+Hello, user #{@user}. How are you
+
