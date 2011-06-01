@@ -1,0 +1,12 @@
+Please swipe your card
+%form(action='update' method='POST')
+  %input(type='text' name='user' value=@user readonly=true)
+  %br
+
+  %input(type='text' name='code' id='code')
+  %br
+
+%script(type='text/javascript' language='javascript')
+  document.getElementById("code").focus();
+  document.getElementById("code").select();
+
