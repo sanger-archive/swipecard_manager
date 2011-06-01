@@ -47,13 +47,16 @@ get '/' do
   haml :index
 end
 
-get '/update' do
+get '/code_input' do
   case @user
   when nil
     redirect to('/login')
   else
     haml :update
   end
+end
+
+post '/update' do
 end
 
 get '/login' do
