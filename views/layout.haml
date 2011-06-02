@@ -2,7 +2,8 @@
   %table.bar#header
     %tr
       %td
-        %h1 Swipecard Manager
+        %h1
+          %a{:href => '/'}Swipecard Manager
       %td#user_name
         - if @user
           logged as #{ @user }
