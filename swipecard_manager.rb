@@ -10,7 +10,9 @@ require 'sequencescape'
 
 
 APP_ROOT = File.dirname(File.expand_path(__FILE__))
-configatron.configure_from_yaml( File.join(APP_ROOT,'config/config.yml'))
+Environment = ENV["RAILS_ENV"] || "development"
+configatron.configure_from_yaml( File.join(APP_ROOT,'config/config.yml'), :hash => Environment)
+raise "Environment '#{Environment} not found if configuration file." if configatron.nil?
 
 def self.init()
   auth = configatron.authentication_service

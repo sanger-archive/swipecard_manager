@@ -1,13 +1,14 @@
-authentication_service:
-  cookie_name: WTSISignOn
-  validation_url: https:/example.com/cgi-bin/utils/verify_login
-#"proxy" =>nil
-login_service:
-  url: https://example.com/sso/login
+environment:
+  authentication_service:
+    cookie_name: WTSISignOn
+    validation_url: https:/example.com/cgi-bin/utils/verify_login
+  #"proxy" =>nil
+  login_service:
+    url: https://example.com/sso/login
 
-sequencescape:
-  url: https://localhost:3000/api/1/
-  find_user_by_login_uuid: uuid
-  authorisation: api-authorisation-token
-  
+  sequencescape:
+    url: https://localhost:3000/api/1/
+    find_user_by_login_uuid: uuid
+    authorisation: api-authorisation-token
+    
 
