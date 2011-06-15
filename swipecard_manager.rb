@@ -85,10 +85,16 @@ post '/update' do
   code = params["code"]
 
   @success = update_code(user, code)
+  @logout_url = configatron.login_service.logout_url or raise "Logout url not found in configuration file."
   haml :update
 end
 
 get '/login' do
   redirect to '/' if @user
   haml :login
+end
+
+#default route
+get '*' do
+  redirect to '/'
 end

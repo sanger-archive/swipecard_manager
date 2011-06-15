@@ -2,3 +2,8 @@
   Swipcard code updated successfully !
 - else
   Something went wrong. Your code hasn't been update.
+%div.warning
+  If you are sharing this computer, you would probably better
+  logout from the Sanger Sign On.
+  %form(action=@logout_url method='GET')
+    %input(type='submit' value='logout')
